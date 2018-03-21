@@ -108,6 +108,10 @@ namespace TestyRawa
             {
                 _webDriver.FindElement(element).Click();
             }
+            public static string GetElementAttribute(By element, string attributeName)
+            {
+                return _webDriver.FindElement(element).GetAttribute(attributeName);
+            }
         }
     }
 }
