@@ -27,7 +27,7 @@ namespace TestyRawa
         [Test,Description("Przeglądanie kształtów pomieszczeń"),Order(1)]
         public void Test()
         {
-            ViewRoomList();
+           Assert.IsTrue(ViewRoomList());
         }
     }
 }

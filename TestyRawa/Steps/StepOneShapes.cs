@@ -14,22 +14,16 @@ namespace TestyRawa
         public bool ViewRoomList()
         {
             WaitUntilElementIsDisplayed((By.XPath("//div[@class='room3dView']")), 5);
-            IList<bool> ActiveClass = new List<bool>();
-            foreach (var item in ShapesRoomList)
+            ShapesRoomList.Select(e => e.GetAttribute("ACTIVE"));
+            return ShapesRoomList.All((element) => 
             {
-                item.Click();
-                string className = item.GetAttribute("class");
+                element.Click();
+                return element.GetAttribute("class").Equals("active");
+            });
 
-                if (item.GetAttribute("Class").Equals("Active"))
-                {
-                    ActiveClass.Add(true);
-                }
-            }
-            if (ActiveClass.All(b => true))
-            {
-                return true;
-            }
-            return false;
+           
         }
+
+ 
     }
 }

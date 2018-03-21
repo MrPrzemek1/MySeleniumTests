@@ -41,7 +41,6 @@ namespace TestyRawa
                         throw new NotImplementedException("I do not know the driver that you supplied.");
                 }
             }
-
             public static bool WaitUntilElementIsDisplayed(By element, int timeoutInSeconds)
             {
                 for (int i = 0; i < timeoutInSeconds; i++)
