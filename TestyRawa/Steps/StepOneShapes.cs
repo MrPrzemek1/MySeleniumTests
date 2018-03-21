@@ -25,7 +25,7 @@ namespace TestyRawa
             });
         }
 
-        public void CheckInputWasChanged()
+        public void CheckInputFieldHasChanged()
         {
             ShapesRoomList[1].Click();
             RoomMinusList[0].Click();

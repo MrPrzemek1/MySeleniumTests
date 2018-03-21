@@ -33,7 +33,7 @@ namespace TestyRawa
         [Test, Description("Sprawdzenie czy po kliknieciu na przycisk + i zmianie wartości w pole inne pole zależne od niego również zmienia wartość."), Order(2)]
         public void Test()
         {
-            CheckInputWasChanged();
+            CheckInputFieldHasChanged();
             Assert.AreEqual("wallSizeInput changed", Browser.GetElementAttribute(By.XPath("//input[@name='3' and @type='number']"), "class"));
         }
     }
