@@ -60,6 +60,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DriverHelper.cs" />
+    <Compile Include="RoomBuilder.cs" />
     <Compile Include="Tests\StepOneTests.cs" />
     <Compile Include="Steps\LoginPage.cs" />
     <Compile Include="Program.cs" />

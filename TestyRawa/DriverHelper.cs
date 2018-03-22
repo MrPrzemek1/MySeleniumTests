@@ -81,6 +81,7 @@ namespace TestyRawa
             {
                 _webDriver = GetDriver(Drivers.Chrome);
                 Goto("konfigurator3d");
+                WaitUntilElementIsDisplayed(By.XPath("//button[@class='btn btn-primary btn-lg btn-start']"), 5);
                 MaximizeWindow();
             }
 
