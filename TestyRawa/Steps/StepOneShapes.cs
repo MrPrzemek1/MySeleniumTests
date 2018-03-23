@@ -7,7 +7,7 @@ using System.Drawing;
 
 namespace TestyRawa
 {
-    public class StepOneShapes : RoomBuilder
+    public class StepOneShapes 
     {
         
         private IList<IWebElement> RoomParamsList => Driver.FindElements(By.XPath("//input[@type='number']"));
@@ -29,10 +29,10 @@ namespace TestyRawa
                 Driver.FindElement(By.XPath("//li[@shape-id]"));
             }
         }
-        StepOneShapes(IWebElement Shape, By Image, IList<IWebElement> Dimension) : base (Shape, Image, Dimension)
-        {
-            this.ksztalt = Shape;
-        }
+        //StepOneShapes(IWebElement Shape, By Image, IList<IWebElement> Dimension) : base (Shape, Image, Dimension)
+        //{
+        //    this.ksztalt = Shape;
+        //}
 
         public bool ViewRoomList()
         {
@@ -82,21 +82,6 @@ namespace TestyRawa
             else
                 IsCompare = false;
                 return false;
-        }
-
-        public override IWebElement GetShape(int shapeId)
-        {
-            return Driver.FindElement(By.XPath("//li[@shape-id='"+shapeId+"']"));
-        }
-
-        public override IWebElement GetImage()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public override IList<IWebElement> GetListOfDimension()
-        {
-            throw new System.NotImplementedException();
         }
     }
 }
