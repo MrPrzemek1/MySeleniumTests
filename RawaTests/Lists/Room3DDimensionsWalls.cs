@@ -8,10 +8,10 @@ namespace RawaTests.Lists
 {
     class Room3DDimensionsWalls
     {
-        public List<Room3DViewModel> Model3D { get; set; }
+        public List<Room3DViewModel> Dimension { get; set; }
         public Room3DDimensionsWalls()
         {
-            Model3D = new List<Room3DViewModel>();
+            Dimension = new List<Room3DViewModel>();
         }
     }
 }

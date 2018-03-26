@@ -120,7 +120,9 @@ namespace RawaTests.Tests
             var usedShape = roomServices.GetShapeByID("30");
             usedShape.ShapeID.Click();
             var a = room3dSrv.Get3DModel();
-            List<IWebElement> list = room3dSrv.GetModelDimension(a);
+            dimensionSrv.GetDimensionModelByName("A").PlusSign.Click();
+            var b = room3dSrv.Get3DModel();
+            var c = room3dSrv.GetStyle(a);
         }
     }
 }
