@@ -9,11 +9,11 @@ using static TestyRawa.DriverHelper.Browser;
 
 namespace RawaTests.StepOne
 {
-   class DimensionsModel : IEnumerable<DimensionModel>, IEnumerable, IComparable<DimensionsModel>
+   class DimensionsList : IEnumerable<DimensionModel>, IEnumerable, IComparable<DimensionsList>
     {
         public List<DimensionModel> Elements { get; set; }
 
-        public DimensionsModel()
+        public DimensionsList()
         {
             Elements = new List<DimensionModel>();
         }
@@ -63,7 +63,7 @@ namespace RawaTests.StepOne
             return this.Elements.GetEnumerator();
         }
 
-        public int CompareTo(DimensionsModel other)
+        public int CompareTo(DimensionsList other)
         {
             return this.Count().CompareTo(other.Count());
         }

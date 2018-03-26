@@ -9,14 +9,14 @@ namespace RawaTests.StepOne
 {
     class DimensionServices
     {
-        public DimensionsModel GetDimensions()
+        public DimensionsList GetDimensions()
         {
            var btnPlus =  Driver.FindElements(By.XPath("//input[@class='btn-inc']"));
            var btnMinus = Driver.FindElements(By.XPath("//input[@class='btn-dec']"));
            var letter = Driver.FindElements(By.XPath("//label[@class='set-room-params-letters']"));
            var inputField = Driver.FindElements(By.XPath("//input[@class='wallSizeInput']"));
 
-            DimensionsModel result = new DimensionsModel();
+            DimensionsList result = new DimensionsList();
 
             for(int i=0; i< btnPlus.Count; ++i)
             {
