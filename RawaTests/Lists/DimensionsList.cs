@@ -40,10 +40,10 @@ namespace RawaTests.StepOne
         //    return result;
         //}
 
-        public DimensionModel GetDimension(string name)
-        {
-            return Elements.Where(e => e.Name == name).FirstOrDefault();
-        }
+        //public DimensionModel GetDimension(string name)
+        //{
+        //    return Elements.Where(e => e.Name == name).FirstOrDefault();
+        //}
 
         public DimensionModel this[string name]
         {

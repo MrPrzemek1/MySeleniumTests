@@ -9,6 +9,7 @@ using static TestyRawa.DriverHelper;
 using OpenQA.Selenium;
 using RawaTests.Tests.Base;
 using RawaTests.Services;
+using RawaTests.Helpers;
 
 namespace RawaTests.Tests
 {
@@ -62,7 +63,7 @@ namespace RawaTests.Tests
         {
             var aDim = this.dimensionSrv.GetDimensions();
 
-            var element = aDim.GetDimension("A");
+            //var element = aDim.GetDimension("A");
 
             element.PlusSign.Click();
 
@@ -110,7 +111,7 @@ namespace RawaTests.Tests
             string expectedClass = "active";
             var usedShape = roomServices.GetShapeByID("30");
             usedShape.ShapeID.Click();
-            var usedShapeClass = roomServices.GetUsedShapeClass(usedShape);
+            var usedShapeClass = roomServices.GetUsedShapeAttribute(HTMLConsts.CLASS,usedShape);
             Assert.AreEqual(expectedClass, usedShapeClass);
 
         }

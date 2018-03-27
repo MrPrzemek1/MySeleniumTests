@@ -1,4 +1,5 @@
 ﻿using OpenQA.Selenium;
+using RawaTests.Helpers;
 using RawaTests.Lists;
 using RawaTests.Model;
 using System;
@@ -28,15 +29,25 @@ namespace RawaTests.Services
             }
             return listOfShapes;
         }
+        /// <summary>
+        /// Metoda wybierająca jeden z kształtów pomieszczeń
+        /// </summary>
+        /// <param name="id">id pomieszczenia ktore chcemy wybrac</param>
+        /// <returns></returns>
         public ShapeRoomModel GetShapeByID(string id)
         {
             var usedShape = GetShapes();
             return usedShape.Shapes.Where(e => e.Id == id).FirstOrDefault();
         }
-
-        public string GetUsedShapeClass(ShapeRoomModel room)
+        /// <summary>
+        /// Metoda zwracająca wybrany atrybut HTML
+        /// </summary>
+        /// <param name="attributeName">nazwa atrybutu html ktory chcemy pobrac</param>
+        /// <param name="room">Aktywny kształt pomieszczenia</param>
+        /// <returns></returns>
+        public string GetUsedShapeAttribute(string attributeName,ShapeRoomModel room)
         {
-            return room.ShapeID.GetAttribute("class");
+            return room.ShapeID.Element.GetAttribute(attributeName);
         }
     }
 }

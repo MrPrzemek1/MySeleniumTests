@@ -1,4 +1,5 @@
 ﻿using OpenQA.Selenium;
+using RawaTests.Model.Base;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -28,14 +28,16 @@ namespace RawaTests.StepOne
                     Name = letter.Count > i ? letter[i].Text : null
                 });
             }
-
             return result;
         }
-
+        /// <summary>
+        /// Metoda zwracająca model elementu w którym możemy modyfikować wielkość pomieszczenia
+        /// </summary>
+        /// <param name="name">etykieta wymiaru np: "A"</param>
+        /// <returns></returns>
         public DimensionModel GetDimensionModelByName(string name)
         {
             var dims = GetDimensions();
-
             return dims.Elements.Where(e => e.Name == name).FirstOrDefault();
         }
     }
