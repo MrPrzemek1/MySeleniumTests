@@ -14,8 +14,10 @@ namespace RawaTests.Services
         public Room3DViewModel Get3DModel()
         {
             var model = Driver.FindElement(By.ClassName("letter"));
-            Room3DViewModel room3D = new Room3DViewModel();
-            room3D.Room3DImage = model;
+            Room3DViewModel room3D = new Room3DViewModel
+            {
+                Room3DImage = model
+            };
             return room3D;
         }
 
