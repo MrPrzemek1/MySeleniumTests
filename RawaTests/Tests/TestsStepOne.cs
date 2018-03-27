@@ -47,11 +47,9 @@ namespace RawaTests.Tests
             Assert.AreEqual(expectedClass, usedShapeClass);
 
         }
-        /// <summary>
-        /// Test sprawdzający czy po kliknięciu w button do zwiększenia wymiarów pomieszczenia zmieniają się wymiary obrazka.
-        /// </summary>
-        [Test]
-        public void VerifyModelRoomSizeWasChangeAfterChangeDimension()
+
+        [Test,Description("Test sprawdzający czy po kliknięciu w button do zwiększenia wymiarów pomieszczenia zmieniają się wymiary obrazka.")]
+        public void VerifyingModelRoomSizeChangeAfterChangingDimension()
         { 
             shapeRoomSrv.GetShapeByID("30").ShapeOfRoom.Click();           
             var firstModel = room3dSrv.Get3DModel();
@@ -59,8 +57,8 @@ namespace RawaTests.Tests
             var modelAfterClick = room3dSrv.Get3DModel();       
             Assert.IsFalse(modelAfterClick.Style.Equals(firstModel.Style));
         }
-        [Test]
-        public void VerifyModelChangedAfterClickOnShape()
+        [Test,Description("Test sprawdzający czy po kliknięciu w kształt pomieszczenia zmienia się model obrazka.")]
+        public void VerifingyModelChangeAfterClickingOnShape_Positive()
         {
             var firstModel = room3dSrv.Get3DModel();
             shapeRoomSrv.GetShapeByID("30").ShapeOfRoom.Click();
@@ -68,7 +66,7 @@ namespace RawaTests.Tests
             Assert.AreNotEqual(firstModel,modelAfterClick);
         }
         [Test]
-        public void VerifyModelChangedAfterClickOnShapeNegative()
+        public void VerifingyModelChangeAfterClickingOnShape_Negative()
         {
             var firstModel = room3dSrv.Get3DModel();            
             var modelAfterClick = room3dSrv.Get3DModel();

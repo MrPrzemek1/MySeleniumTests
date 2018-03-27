@@ -16,10 +16,8 @@ namespace RawaTests
         public Room3DViewModel()
         {
             Room3DImage = null;
-
         }
         public string Style { get { return Room3DImage.GetAttribute(HTMLConsts.STYLE); } }
-
     }
 
 }
