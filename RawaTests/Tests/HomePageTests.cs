@@ -1,10 +1,5 @@
 ﻿using NUnit.Framework;
-using RawaTests.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using RawaTests.Services;
 using static TestyRawa.DriverHelper;
 
 namespace RawaTests.Tests
@@ -15,7 +10,7 @@ namespace RawaTests.Tests
         HomePageServices homePageSrv;
         HomePageTests()
         {
-            homePageSrv = new HomePageModel
+            homePageSrv = new HomePageServices();
         }
         
         [SetUp]

@@ -60,6 +60,7 @@
     <Compile Include="Helpers\DriverHelper.cs" />
     <Compile Include="Lists\ShapeRoomList.cs" />
     <Compile Include="Model\Base\CustomWebElement.cs" />
+    <Compile Include="Model\HomePageModel.cs" />
     <Compile Include="Model\ShapeRoomModel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -67,9 +68,11 @@
     <Compile Include="Model\DimensionModel.cs" />
     <Compile Include="Services\DimensionServices.cs" />
     <Compile Include="Lists\DimensionsList.cs" />
+    <Compile Include="Services\HomePageServices.cs" />
     <Compile Include="Services\Room3DServices.cs" />
     <Compile Include="Services\ShapeRoomServices.cs" />
     <Compile Include="Tests\Base\BaseTest.cs" />
+    <Compile Include="Tests\HomePageTests.cs" />
     <Compile Include="Tests\TestsStepOne.cs" />
   </ItemGroup>
   <ItemGroup>
