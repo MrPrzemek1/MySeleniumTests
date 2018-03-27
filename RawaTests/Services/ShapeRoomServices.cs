@@ -47,7 +47,7 @@ namespace RawaTests.Services
         /// <returns></returns>
         public string GetUsedShapeAttribute(string attributeName,ShapeRoomModel room)
         {
-            return room.ShapeID.Element.GetAttribute(attributeName);
+            return room.ShapeID.GetAttribute(attributeName);
         }
     }
 }
