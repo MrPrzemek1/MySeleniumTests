@@ -11,16 +11,13 @@ namespace RawaTests.Model
     public class ShapeRoomModel
     {
        // public int[6] NumberOfShapes { get; set; }
-        public IWebElement ShapeID { get; set; }
-        public IWebElement Header { get; set; }
-        public IWebElement Source { get; set; }
-        public IWebElement ClassName { get; set; }
+        public IWebElement ShapeOfRoom { get; set; }
 
         public string Id
         {
             get
             {
-                return ShapeID.GetAttribute("shape-id");
+                return ShapeOfRoom.GetAttribute("shape-id");
             }
         }
 

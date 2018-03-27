@@ -9,21 +9,31 @@ using static TestyRawa.DriverHelper.Browser;
 
 namespace RawaTests.Services
 {
-    class Room3DServices
+    class Room3DServices : IEquatable<Room3DViewModel>
     {
         public Room3DViewModel Get3DModel()
         {
             var model = Driver.FindElement(By.ClassName("letter"));
             Room3DViewModel room3D = new Room3DViewModel();
-            room3D.Room3DImage.Element = model;
+            room3D.Room3DImage = model;
             return room3D;
         }
 
         public string GetRoomAttribute(string attributeName, Room3DViewModel a)
         {
             string art;
-            art = a.Room3DImage.Element.GetAttribute(attributeName);
+            art = a.Room3DImage.GetAttribute(attributeName);
             return art;
         }
+        public bool Equals(Room3DViewModel other)
+        {
+            if (other == null)
+            {
+                return false;
+            }
+
+            return this.Get3DModel().Equals(other);
+        }
+
     }
 }

@@ -37,11 +37,12 @@ namespace RawaTests.Tests
         /// <summary>
         /// Test sprawdzajacy czy po kilknieciu w kształt pomieszczenia jego klasa zmienia sie na active
         /// </summary>
+        [Test]
         public void VerifyClickedElementChangeClass()
         {
             string expectedClass = "active";
             var usedShape = shapeRoomSrv.GetShapeByID("30");
-            usedShape.ShapeID.Click();
+            usedShape.ShapeOfRoom.Click();
             var usedShapeClass = shapeRoomSrv.GetUsedShapeAttribute(HTMLConsts.CLASS,usedShape);
             Assert.AreEqual(expectedClass, usedShapeClass);
 
@@ -50,20 +51,29 @@ namespace RawaTests.Tests
         /// Test sprawdzający czy po kliknięciu w button do zwiększenia wymiarów pomieszczenia zmieniają się wymiary obrazka.
         /// </summary>
         [Test]
-        public void VerifyImageSizeWasChangeAfterChangeDimension()
+        public void VerifyModelRoomSizeWasChangeAfterChangeDimension()
         { 
-            var usedShape = shapeRoomSrv.GetShapeByID("30");
-            usedShape.ShapeID.Click();
+            shapeRoomSrv.GetShapeByID("30").ShapeOfRoom.Click();           
             var firstModel = room3dSrv.Get3DModel();
             dimensionSrv.GetDimensionModelByName("B").PlusSign.Click();
             var modelAfterClick = room3dSrv.Get3DModel();       
-            Assert.IsFalse(modelAfterClick.Room3DImage.Style.Equals(firstModel.Room3DImage.Style));
+            Assert.IsFalse(modelAfterClick.Style.Equals(firstModel.Style));
         }
         [Test]
-        public void VerifyImageChangedAfterClickOnShape()
+        public void VerifyModelChangedAfterClickOnShape()
         {
-            shapeRoomSrv.GetShapeByID("30").ShapeID.Click();
-
+            var firstModel = room3dSrv.Get3DModel();
+            shapeRoomSrv.GetShapeByID("30").ShapeOfRoom.Click();
+            var modelAfterClick = room3dSrv.Get3DModel();
+            Assert.AreNotEqual(firstModel,modelAfterClick);
+        }
+        [Test]
+        public void VerifyModelChangedAfterClickOnShapeNegative()
+        {
+            var firstModel = room3dSrv.Get3DModel();            
+            var modelAfterClick = room3dSrv.Get3DModel();
+            shapeRoomSrv.GetShapeByID("30").ShapeOfRoom.Click();
+            Assert.AreEqual(firstModel, modelAfterClick);
         }
     }
 }

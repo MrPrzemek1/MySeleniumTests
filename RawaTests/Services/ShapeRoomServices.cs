@@ -23,7 +23,7 @@ namespace RawaTests.Services
             {
                 listOfShapes.Shapes.Add(new ShapeRoomModel
                 {
-                    ShapeID = shape_id[i],
+                    ShapeOfRoom = shape_id[i],
                 });
                 i++;
             }
@@ -47,7 +47,7 @@ namespace RawaTests.Services
         /// <returns></returns>
         public string GetUsedShapeAttribute(string attributeName,ShapeRoomModel room)
         {
-            return room.ShapeID.GetAttribute(attributeName);
+            return room.ShapeOfRoom.GetAttribute(attributeName);
         }
     }
 }
