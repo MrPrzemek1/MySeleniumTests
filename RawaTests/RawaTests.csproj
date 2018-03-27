@@ -56,9 +56,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Helpers\HTMLConsts.cs" />
     <Compile Include="Helpers\DriverHelper.cs" />
     <Compile Include="Lists\Room3DDimensionsWalls.cs" />
     <Compile Include="Lists\ShapeRoomList.cs" />
+    <Compile Include="Model\Base\CustomWebElement.cs" />
     <Compile Include="Model\ShapeRoomModel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

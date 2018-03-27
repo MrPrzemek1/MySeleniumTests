@@ -11,41 +11,33 @@ namespace RawaTests.Services
 {
     class Room3DServices : IEquatable<Room3DDimensionsWalls>
     {
-        public Room3DDimensionsWalls Get3DModel()
+        public Room3DViewModel Get3DModel()
         {
-            var model = Driver.FindElements(By.ClassName("letter"));
+            var model = Driver.FindElement(By.ClassName("letter"));
             //var dimension = Driver.FindElements(By.ClassName("letter"));
 
-            Room3DDimensionsWalls room3D = new Room3DDimensionsWalls();
-            for (int i = 0; i < model.Count; ++i)
-            {
-                room3D.Dimension.Add(new Room3DViewModel
-                {
-                    Room3DImage = model[i],
-                });
-
-            }
+            Room3DViewModel room3D = new Room3DViewModel();
+            room3D.Room3DImage = model;
             return room3D;
         }
 
-        public Room3DViewModel GetDimStyle(string art)
+        public string GetDimStyle(Room3DViewModel a)
         {
-            var dim = Get3DModel();
-            var dim2 = dim.Dimension.Select(e=>e.Room3DImage.GetAttribute("letter"));
-            List<Room3DViewModel> asd = new List<Room3DViewModel>();
-            return dim2;
+            string art;
+            art =  a.Room3DImage.GetAttribute("style");
+            return art;
         }
 
-        public List<string> GetStyle(Room3DViewModel model)
-        {
-            var a = Get3DModel();
-            List<string> list = new List<string>();
-            for (int i = 0; i < a.Dimension.Count; i++)
-            {
-                list.Add(model.Room3DImage.Text);
-            }
-            return list;
-        }
+        //public List<string> GetStyle(Room3DViewModel model)
+        //{
+        //    var a = Get3DModel();
+        //    List<string> list = new List<string>();
+        //    for (int i = 0; i < a.Dimension.Count; i++)
+        //    {
+        //        list.Add(model.Room3DImage.Text);
+        //    }
+        //    return list;
+        //}
 
         public bool Equals(Room3DDimensionsWalls other)
         {

@@ -14,5 +14,15 @@ namespace RawaTests.Model
         public IWebElement Header { get; set; }
         public IWebElement Source { get; set; }
         public IWebElement ClassName { get; set; }
+
+        public string Id
+        {
+            get
+            {
+                return ShapeID.GetAttribute("shape-id");
+            }
+        }
+
+
     }
 }

@@ -17,13 +17,5 @@ namespace RawaTests.Lists
         {
             Shapes = new List<ShapeRoomModel>();
         }
-
-        public ShapeRoomModel this[string id]
-        {
-            get
-            {
-               return Shapes.Where(e => e.ShapeID.GetAttribute("shape-id") == id).FirstOrDefault();
-            }
-        }
     }
 }

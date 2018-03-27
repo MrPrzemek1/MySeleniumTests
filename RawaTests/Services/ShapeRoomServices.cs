@@ -31,13 +31,12 @@ namespace RawaTests.Services
         public ShapeRoomModel GetShapeByID(string id)
         {
             var usedShape = GetShapes();
-            return usedShape.Shapes.Where(e => e.ShapeID.GetAttribute("shape-id") == id).FirstOrDefault();
+            return usedShape.Shapes.Where(e => e.Id == id).FirstOrDefault();
         }
 
         public string GetUsedShapeClass(ShapeRoomModel room)
         {
             return room.ShapeID.GetAttribute("class");
         }
-
     }
 }
