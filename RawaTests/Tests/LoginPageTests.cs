@@ -43,8 +43,31 @@ namespace RawaTests.Tests
             loginSrv.SetLoginData(model);
             model.LoginButton.Click();
             WaitUntilElementIsDisplayed(By.XPath(HtmlHomePageElements.ButtonStart), 5);
-            Assert.IsTrue(Driver.FindElement(By.Id(HtmlLoginPageElements.Logout)).Displayed);
+            Assert.IsTrue(Driver.FindElement(By.XPath(HtmlLoginPageElements.LogoutButton)).Displayed);
         }
+        [Test]
+        public void VerifyingValidateAlerts()
+        {
+            Driver.FindElement(By.XPath(HtmlLoginPageElements.LogoutButton)).Click();
+            WaitUntilElementIsDisplayed(By.XPath(HtmlHomePageElements.ButtonStart), 5);
+            var model = loginSrv.GetLoginPageModel();
+            Driver.FindElement(By.ClassName(HtmlHomePageElements.Login)).Click();
+
+            model.Login.SendKeys(LoginData.Login);
+            model.Password.SendKeys(LoginData.Password);
+            model.LoginButton.Click();
+
+            var validateField = Driver.FindElement(By.XPath(HtmlLoginPageElements.ValidateField));
+            if (validateField.Displayed)
+            {
+
+                Assert.AreEqual("Pole nazwa firmy jest obowiązkowe", validateField.Text);
+            }
+
+
+
+        }
+
 
     }
 }
