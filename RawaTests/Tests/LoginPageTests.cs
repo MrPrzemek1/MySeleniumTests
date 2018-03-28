@@ -48,11 +48,12 @@ namespace RawaTests.Tests
         [Test]
         public void VerifyingValidateAlerts()
         {
-            Driver.FindElement(By.XPath(HtmlLoginPageElements.LogoutButton)).Click();
-            WaitUntilElementIsDisplayed(By.XPath(HtmlHomePageElements.ButtonStart), 5);
             var model = loginSrv.GetLoginPageModel();
-            Driver.FindElement(By.ClassName(HtmlHomePageElements.Login)).Click();
+            var homePage = homeSrv.GetHomePageModel();
+            homeSrv.ClickOnLoginButton(homePage);
 
+            WaitUntilElementIsDisplayed(By.XPath(HtmlHomePageElements.ButtonStart), 5);
+           
             model.Login.SendKeys(LoginData.Login);
             model.Password.SendKeys(LoginData.Password);
             model.LoginButton.Click();

@@ -12,6 +12,6 @@ namespace RawaTests.Helpers
         public static string HomePageImage = "img-responsive";
         public static string HomePageLogo = "logo";
         public static string Footer = "//div[@class=' col-xs-12 footer-wraper']";
-        public static string Login = "link-login";
+        public static string LoginButton = "//a[@class='link-login']";
     }
 }

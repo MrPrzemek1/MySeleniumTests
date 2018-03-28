@@ -18,7 +18,9 @@ namespace RawaTests.Services
             var homeImg = Driver.FindElement(By.ClassName(HtmlHomePageElements.HomePageImage));
             var logoImg = Driver.FindElement(By.ClassName(HtmlHomePageElements.HomePageLogo));
             var footer = Driver.FindElement(By.XPath(HtmlHomePageElements.Footer));
-            HomePageModel homeModel = new HomePageModel(startButton, homeImg, logoImg, footer);
+            var loginBtn = Driver.FindElement(By.XPath(HtmlHomePageElements.LoginButton));
+
+            HomePageModel homeModel = new HomePageModel(startButton, homeImg, logoImg, footer, loginBtn);
             return homeModel;
         }
         public bool StartButtonIsDisplay(HomePageModel model)
@@ -28,6 +30,10 @@ namespace RawaTests.Services
                 return false;
             }
             return true;
+        }
+        public void ClickOnLoginButton(HomePageModel model)
+        {
+            model.LoginBtn.Click();
         }
     }
 }
