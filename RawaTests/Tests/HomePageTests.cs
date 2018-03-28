@@ -6,7 +6,7 @@ using static TestyRawa.DriverHelper;
 namespace RawaTests.Tests
 {
     [TestFixture]
-    class HomePageTests
+    class HomePageTests : IDriverService
     {
         HomePageServices homePageSrv;
         HomePageTests()
@@ -14,12 +14,12 @@ namespace RawaTests.Tests
             homePageSrv = new HomePageServices();
         }
         
-        [SetUp]
+        [OneTimeSetUp]
         public void TestInizialize()
         {
             Browser.Initialize();
         }
-        [TearDown]
+        [OneTimeTearDown]
         public void EndTest()
         {
             Browser.Quit();
