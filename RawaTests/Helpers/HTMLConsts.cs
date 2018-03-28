@@ -14,8 +14,7 @@ namespace RawaTests.Helpers
     public static class HTMLConsts
     {
         public const string STYLE = "style";
-
         public const string CLASS = "class";
-        
+        public const string BUTTONSTART = "//button[@class='btn btn-primary btn-lg btn-start']";
     }
 }

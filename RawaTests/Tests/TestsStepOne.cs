@@ -49,7 +49,7 @@ namespace RawaTests.Tests
         }
 
         [Test,Description("Test sprawdzający czy po kliknięciu w button do zwiększenia wymiarów pomieszczenia zmieniają się wymiary obrazka.")]
-        public void VerifyingModelRoomSizeChangeAfterChangingDimension()
+        public void VerifyingModelRoomSizeAfterChangingDimension()
         { 
             shapeRoomSrv.GetShapeByID("30").ShapeOfRoom.Click();           
             var firstModel = room3dSrv.Get3DModel();
@@ -73,5 +73,6 @@ namespace RawaTests.Tests
             shapeRoomSrv.GetShapeByID("30").ShapeOfRoom.Click();
             Assert.AreEqual(firstModel, modelAfterClick);
         }
+        
     }
 }

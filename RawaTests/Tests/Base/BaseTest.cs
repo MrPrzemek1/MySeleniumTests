@@ -1,5 +1,6 @@
 ﻿using NUnit.Framework;
 using OpenQA.Selenium;
+using RawaTests.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +17,6 @@ namespace RawaTests.Tests.Base
         {
             
         }
-
         public abstract void Init();
 
         public abstract void End();
@@ -24,7 +24,7 @@ namespace RawaTests.Tests.Base
         public void TestInizialize()
         {
             Browser.Initialize();
-            Browser.ClickOnElement(By.XPath("//button[@class='btn btn-primary btn-lg btn-start']"));
+            Browser.ClickOnElement(By.XPath(HTMLConsts.BUTTONSTART));
             Browser.WaitUntilElementIsDisplayed(By.XPath("//input[@class='btn-inc']"), 5);
 
             Init();
@@ -35,5 +35,6 @@ namespace RawaTests.Tests.Base
             End();
             Browser.Quit();
         }
+        
     }
 }
