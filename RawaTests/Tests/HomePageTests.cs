@@ -5,7 +5,7 @@ using static TestyRawa.DriverHelper;
 
 namespace RawaTests.Tests
 {
-    [TestFixture(Category ="lalal")]
+    [TestFixture(Category ="HomePageTests")]
     class HomePageTests : IDriverService
     {
         HomePageServices homePageSrv;

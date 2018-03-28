@@ -13,6 +13,7 @@ using RawaTests.Helpers;
 
 namespace RawaTests.Tests
 {
+    [TestFixture(Category ="StepOne")]
     class TestsStepOne : BaseTest
     {
         private DimensionServices dimensionSrv;
@@ -37,7 +38,7 @@ namespace RawaTests.Tests
         /// <summary>
         /// Test sprawdzajacy czy po kilknieciu w kształt pomieszczenia jego klasa zmienia sie na active
         /// </summary>
-        [Test]
+        [Test,Order(1)]
         public void VerifyClickedElementChangeClass()
         {
             string expectedClass = "active";

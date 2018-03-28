@@ -10,7 +10,7 @@ using static TestyRawa.DriverHelper;
 
 namespace RawaTests.Tests.Base
 {
-    [TestFixture]
+    [SetUpFixture]
     public abstract class BaseTest : IDriverService
     {
         public BaseTest()
@@ -20,16 +20,16 @@ namespace RawaTests.Tests.Base
         public abstract void Init();
 
         public abstract void End();
-        [SetUp]
+        [OneTimeSetUp]
         public void TestInizialize()
         {
             Browser.Initialize();
-            Browser.ClickOnElement(By.XPath(HTMLConsts.BUTTONSTART));
-            Browser.WaitUntilElementIsDisplayed(By.XPath("//input[@class='btn-inc']"), 5);
+            Browser.ClickOnElement(By.XPath(HtmlHomePageElements.ButtonStart));
+            Browser.WaitUntilElementIsDisplayed(By.XPath(HtmlStepOneElements.MinusSignClass), 5);
 
             Init();
         }
-        [TearDown]
+        [OneTimeTearDown]
         public void EndTest()
         {
             End();
