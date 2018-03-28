@@ -1,4 +1,5 @@
 ﻿using OpenQA.Selenium;
+using RawaTests.Helpers;
 using RawaTests.Lists;
 using System;
 using System.Collections.Generic;
@@ -13,7 +14,7 @@ namespace RawaTests.Services
     {
         public Room3DViewModel Get3DModel()
         {
-            var model = Driver.FindElement(By.ClassName("letter"));
+            var model = Driver.FindElement(By.ClassName(HtmlStepOneElements.WallClass));
             Room3DViewModel room3D = new Room3DViewModel
             {
                 Room3DImage = model

@@ -1,4 +1,5 @@
 ﻿using OpenQA.Selenium;
+using RawaTests.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,10 +12,10 @@ namespace RawaTests.StepOne
     {
         public DimensionsList GetDimensions()
         {
-           var btnPlus =  Driver.FindElements(By.XPath("//input[@class='btn-inc']"));
-           var btnMinus = Driver.FindElements(By.XPath("//input[@class='btn-dec']"));
-           var letter = Driver.FindElements(By.XPath("//label[@class='set-room-params-letters']"));
-           var inputField = Driver.FindElements(By.XPath("//input[@class='wallSizeInput']"));
+           var btnPlus =  Driver.FindElements(By.XPath(HtmlStepOneElements.PlusSignClass));
+           var btnMinus = Driver.FindElements(By.XPath(HtmlStepOneElements.MinusSignClass));
+           var descriptionField = Driver.FindElements(By.XPath(HtmlStepOneElements.DescriptionFieldClass));
+           var inputField = Driver.FindElements(By.XPath(HtmlStepOneElements.InputFieldClass));
 
             DimensionsList result = new DimensionsList();
 
@@ -25,7 +26,7 @@ namespace RawaTests.StepOne
                     PlusSign = btnPlus[i],
                     MinusSign = btnMinus[i],
                     Input = inputField.Count > i ? inputField[i]  : null,
-                    Name = letter.Count > i ? letter[i].Text : null
+                    Name = descriptionField.Count > i ? descriptionField[i].Text : null
                 });
             }
             return result;

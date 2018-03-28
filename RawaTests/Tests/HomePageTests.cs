@@ -5,11 +5,11 @@ using static TestyRawa.DriverHelper;
 
 namespace RawaTests.Tests
 {
-    [TestFixture]
+    [TestFixture(Category ="lalal")]
     class HomePageTests : IDriverService
     {
         HomePageServices homePageSrv;
-        HomePageTests()
+        public HomePageTests()
         {
             homePageSrv = new HomePageServices();
         }
@@ -24,7 +24,7 @@ namespace RawaTests.Tests
         {
             Browser.Quit();
         }
-        [Test]
+        [Test,Description("hahah")]
         public void ButtonStartIsDisplayed()
         {
             var homeModel = homePageSrv.GetHomePageModel();

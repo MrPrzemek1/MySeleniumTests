@@ -15,6 +15,6 @@ namespace RawaTests.Helpers
     {
         public const string STYLE = "style";
         public const string CLASS = "class";
-        public const string BUTTONSTART = "//button[@class='btn btn-primary btn-lg btn-start']";
+        public const string FOOTER = "© 2018 RAWA Fabryka Mebli.Wszelkie prawa zastrzeżone.";
     }
 }

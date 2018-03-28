@@ -12,11 +12,13 @@ namespace RawaTests.Model
         public IWebElement StartButton { get; set; }
         public IWebElement HomePageImage { get; set; }
         public IWebElement LogoImage { get; set; }
-        public HomePageModel(IWebElement button, IWebElement homeImg, IWebElement logoImg)
+        public IWebElement Footer { get; set;}
+        public HomePageModel(IWebElement button, IWebElement homeImg, IWebElement logoImg, IWebElement footer)
         {
             StartButton = button;
             HomePageImage = homeImg;
             LogoImage = logoImg;
+            Footer = footer;
         }
     }
 }

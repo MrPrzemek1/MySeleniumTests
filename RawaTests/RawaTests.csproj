@@ -58,6 +58,8 @@
   <ItemGroup>
     <Compile Include="Helpers\HTMLConsts.cs" />
     <Compile Include="Helpers\DriverHelper.cs" />
+    <Compile Include="Helpers\HtmlHomePageElements.cs" />
+    <Compile Include="Helpers\HtmlStepOneElements.cs" />
     <Compile Include="IDriverService.cs" />
     <Compile Include="Lists\ShapeRoomList.cs" />
     <Compile Include="Model\Base\CustomWebElement.cs" />

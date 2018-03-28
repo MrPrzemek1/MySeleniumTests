@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using static TestyRawa.DriverHelper.Browser;
 using OpenQA.Selenium;
 using RawaTests.Model;
+using RawaTests.Helpers;
 
 namespace RawaTests.Services
 {
@@ -13,10 +14,11 @@ namespace RawaTests.Services
     {
         public HomePageModel GetHomePageModel()
         {
-            var startButton = Driver.FindElement(By.XPath("//button[@class='btn btn-primary btn-lg btn-start']"));
-            var homeImg = Driver.FindElement(By.ClassName("img-responsive"));
-            var logoImg = Driver.FindElement(By.ClassName("logo"));
-            HomePageModel homeModel = new HomePageModel(startButton, homeImg, logoImg);
+            var startButton = Driver.FindElement(By.XPath(HtmlHomePageElements.ButtonStart));
+            var homeImg = Driver.FindElement(By.ClassName(HtmlHomePageElements.HomePageImage));
+            var logoImg = Driver.FindElement(By.ClassName(HtmlHomePageElements.HomePageLogo));
+            var footer = Driver.FindElement(By.XPath(HtmlHomePageElements.Footer));
+            HomePageModel homeModel = new HomePageModel(startButton, homeImg, logoImg, footer);
             return homeModel;
         }
         public bool StartButtonIsDisplay(HomePageModel model)
