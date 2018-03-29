@@ -1,4 +1,4 @@
-﻿using NUnit.Framework;
+﻿ using NUnit.Framework;
 using OpenQA.Selenium;
 using RawaTests.Helpers;
 using RawaTests.Services;
@@ -35,10 +35,10 @@ namespace RawaTests.Tests
         public void CorrectLogin()
         {
             var LoginFormModel = loginServices.GetLoginPageModel();
-            loginServices.SetLoginData(LoginFormModel);
+            loginServices.SetLoginCorrectData(LoginFormModel);
             LoginFormModel.LoginButton.Click();
             WaitUntilElementIsDisplayed(By.XPath(HtmlHomePageElements.ButtonStart), 5);
-            Assert.IsTrue(Driver.FindElement(By.XPath(HtmlLoginPageElements.LogoutButton)).Displayed);
+            Assert.IsTrue(Driver.FindElement(By.Id(HtmlHomePageElements.LogoutDiv)).Displayed);
         }
         [Test, Order(2)]
         public void VerifyingCompanyValidateTexts()
@@ -70,6 +70,18 @@ namespace RawaTests.Tests
             loginServices.GetLoginPageModel().LoginButton.Click();
             var validateField = Driver.FindElement(By.XPath(HtmlLoginPageElements.ValidateField));
             Assert.AreEqual(ValidateTextsHelper.ErrorValidateText, validateField.Text);
+        }
+        [Test]
+        public void VerifyLogout()
+        {
+            var loginModel = loginServices.GetLoginPageModel();
+            loginServices.SetLoginCorrectData(loginModel);
+            loginModel.LoginButton.Click();
+            Driver.FindElement(By.XPath(HtmlLoginPageElements.LogoutButton)).Click();
+            Assert.IsTrue(AlertHelper.HandleAlert());
+            AlertHelper.AcceptAlert();
+            bool present = homeSrv.isElementExist();
+            Assert.IsFalse(present);
         }
 
     }

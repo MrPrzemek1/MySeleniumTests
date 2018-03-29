@@ -18,7 +18,7 @@ namespace RawaTests.Services
             LoginPageModel model = new LoginPageModel(companyField, loginField, passwordField, loginBtn);
             return model;
         }
-        public void SetLoginData(LoginPageModel model)
+        public void SetLoginCorrectData(LoginPageModel model)
         {
             model.CompanyName.SendKeys(LoginData.CompanyName);
             model.Login.SendKeys(LoginData.Login);

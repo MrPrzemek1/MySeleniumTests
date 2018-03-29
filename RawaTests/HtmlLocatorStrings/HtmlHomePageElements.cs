@@ -7,5 +7,7 @@
         public static string HomePageLogo = "logo";
         public static string Footer = "//div[@class=' col-xs-12 footer-wraper']";
         public static string LoginButton = "//a[@class='link-login']";
+        public static string LogoutDiv = "//div[@id='div-logout']";
+
     }
 }

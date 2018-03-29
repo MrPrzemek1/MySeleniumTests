@@ -2,11 +2,13 @@
 using OpenQA.Selenium;
 using RawaTests.Model;
 using RawaTests.Helpers;
+using System;
 
 namespace RawaTests.Services
 {
     class HomePageServices
     {
+        IWebElement logoutDiv;
         public HomePageModel GetHomePageModel()
         {
             var startButton = Driver.FindElement(By.XPath(HtmlHomePageElements.ButtonStart));
@@ -29,6 +31,18 @@ namespace RawaTests.Services
         public void ClickOnLoginButton(HomePageModel model)
         {
             model.LoginBtn.Click();
+        }
+        public bool isElementExist()
+        {
+            try
+            {
+                logoutDiv = Driver.FindElement(By.XPath(HtmlHomePageElements.LogoutDiv));
+                return true;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
         }
     }
 }
