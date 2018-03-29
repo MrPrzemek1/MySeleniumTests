@@ -2,25 +2,20 @@
 using OpenQA.Selenium;
 using RawaTests.Helpers;
 using RawaTests.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using static TestyRawa.DriverHelper;
 using static TestyRawa.DriverHelper.Browser;
-
+using RawaTests.ValidateMessages;
 namespace RawaTests.Tests
 {
     [TestFixture(Category ="LoginPageTests")]
     class LoginPageTests
     {
-        LoginPageServices loginSrv;
+        LoginPageServices loginServices;
         HomePageServices homeSrv;
 
         public LoginPageTests()
         {
-            loginSrv = new LoginPageServices();
+            loginServices = new LoginPageServices();
             homeSrv = new HomePageServices();
         }
 
@@ -28,7 +23,7 @@ namespace RawaTests.Tests
         public void TestInizialize()
         {
             Browser.Initialize();
-            Driver.FindElement(By.ClassName(HtmlHomePageElements.Login)).Click();
+            Driver.FindElement(By.XPath(HtmlHomePageElements.LoginButton)).Click();
             WaitUntilElementIsDisplayed(By.XPath(HtmlLoginPageElements.LoginForm),5);
         }
         [OneTimeTearDown]
@@ -36,39 +31,46 @@ namespace RawaTests.Tests
         {
             Browser.Quit();
         }
-        [Test,Description("asdas")]
+        [Test,Description("asdas"), Order(1)]
         public void CorrectLogin()
         {
-            var model = loginSrv.GetLoginPageModel();
-            loginSrv.SetLoginData(model);
-            model.LoginButton.Click();
+            var LoginFormModel = loginServices.GetLoginPageModel();
+            loginServices.SetLoginData(LoginFormModel);
+            LoginFormModel.LoginButton.Click();
             WaitUntilElementIsDisplayed(By.XPath(HtmlHomePageElements.ButtonStart), 5);
             Assert.IsTrue(Driver.FindElement(By.XPath(HtmlLoginPageElements.LogoutButton)).Displayed);
         }
-        [Test]
-        public void VerifyingValidateAlerts()
+        [Test, Order(2)]
+        public void VerifyingCompanyValidateTexts()
         {
-            var model = loginSrv.GetLoginPageModel();
-            var homePage = homeSrv.GetHomePageModel();
-            homeSrv.ClickOnLoginButton(homePage);
-
+            Driver.FindElement(By.XPath(HtmlLoginPageElements.LogoutButton)).Click();
+            AlertHelper.AcceptAlert();
             WaitUntilElementIsDisplayed(By.XPath(HtmlHomePageElements.ButtonStart), 5);
-           
-            model.Login.SendKeys(LoginData.Login);
-            model.Password.SendKeys(LoginData.Password);
-            model.LoginButton.Click();
-
-            var validateField = Driver.FindElement(By.XPath(HtmlLoginPageElements.ValidateField));
-            if (validateField.Displayed)
-            {
-
-                Assert.AreEqual("Pole nazwa firmy jest obowiązkowe", validateField.Text);
-            }
-
-
-
+            var homePageModel = homeSrv.GetHomePageModel();
+            homeSrv.ClickOnLoginButton(homePageModel);
+            var LoginFormModel = loginServices.GetLoginPageModel();
+            LoginFormModel.Login.SendKeys(LoginData.Login);
+            LoginFormModel.Password.SendKeys(LoginData.Password);
+            LoginFormModel.LoginButton.Click();
         }
-
+        [Test]
+        public void VerifingValidateTextWhenAllLoginDataFieldAreEmpty()
+        {
+            Driver.Navigate().Refresh();
+            var homePageModel = homeSrv.GetHomePageModel();
+            homeSrv.ClickOnLoginButton(homePageModel);
+            loginServices.GetLoginPageModel().LoginButton.Click();
+            var validateField = Driver.FindElement(By.XPath(HtmlLoginPageElements.ValidateField));
+            Assert.AreEqual(ValidateTextsHelper.FullValidateText, validateField.Text);
+        }
+        [Test]
+        public void VerifyWrongLoginDataValidationText()
+        {
+            loginServices.SetLoginData("test","test","test");
+            loginServices.GetLoginPageModel().LoginButton.Click();
+            var validateField = Driver.FindElement(By.XPath(HtmlLoginPageElements.ValidateField));
+            Assert.AreEqual(ValidateTextsHelper.ErrorValidateText, validateField.Text);
+        }
 
     }
 }

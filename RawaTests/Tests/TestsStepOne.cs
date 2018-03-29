@@ -1,12 +1,5 @@
 ﻿using RawaTests.StepOne;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using NUnit.Framework;
-using static TestyRawa.DriverHelper;
-using OpenQA.Selenium;
 using RawaTests.Tests.Base;
 using RawaTests.Services;
 using RawaTests.Helpers;
@@ -54,9 +47,10 @@ namespace RawaTests.Tests
         { 
             shapeRoomSrv.GetShapeByID("30").ShapeOfRoom.Click();           
             var firstModel = room3dSrv.Get3DModel();
+            string firstModelStyle = firstModel.Style;
             dimensionSrv.GetDimensionModelByName("B").PlusSign.Click();
             var modelAfterClick = room3dSrv.Get3DModel();       
-            Assert.IsFalse(modelAfterClick.Style.Equals(firstModel.Style));
+            Assert.IsFalse(modelAfterClick.Style.Equals(firstModelStyle));
         }
         [Test,Description("Test sprawdzający czy po kliknięciu w kształt pomieszczenia zmienia się model obrazka.")]
         public void VerifingyModelChangeAfterClickingOnShape_Positive()

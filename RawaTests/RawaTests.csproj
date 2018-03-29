@@ -56,12 +56,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Helpers\AlertHelper.cs" />
     <Compile Include="Helpers\HTMLConsts.cs" />
     <Compile Include="Helpers\DriverHelper.cs" />
-    <Compile Include="Helpers\HtmlHomePageElements.cs" />
-    <Compile Include="Helpers\HtmlStepOneElements.cs" />
+    <Compile Include="HtmlLocatorStrings\HtmlHomePageElements.cs" />
+    <Compile Include="HtmlLocatorStrings\HtmlStepOneElements.cs" />
     <Compile Include="Helpers\LoginData.cs" />
-    <Compile Include="Helpers\HtmlLoginPageElements.cs" />
+    <Compile Include="HtmlLocatorStrings\HtmlLoginPageElements.cs" />
     <Compile Include="IDriverService.cs" />
     <Compile Include="Lists\ShapeRoomList.cs" />
     <Compile Include="Model\Base\CustomWebElement.cs" />
@@ -82,6 +83,7 @@
     <Compile Include="Tests\HomePageTests.cs" />
     <Compile Include="Tests\LoginPageTests.cs" />
     <Compile Include="Tests\TestsStepOne.cs" />
+    <Compile Include="Helpers\ValidateTextsHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

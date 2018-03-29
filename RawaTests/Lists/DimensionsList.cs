@@ -1,15 +1,11 @@
-﻿using OpenQA.Selenium;
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static TestyRawa.DriverHelper.Browser;
 
 namespace RawaTests.StepOne
 {
-   class DimensionsList : IEnumerable<DimensionModel>, IEnumerable, IComparable<DimensionsList>
+    class DimensionsList : IEnumerable<DimensionModel>, IEnumerable, IComparable<DimensionsList>
     {
         public List<DimensionModel> Elements { get; set; }
 

@@ -18,16 +18,14 @@ namespace TestyRawa
         }
         public static class Browser
         {
-            private static IWebDriver _webDriver;
             private static string _baseUrl = "http://demo.net-art.eu/";
             internal static void SwitchTabs(int tabIndex)
             {
-                var windows = _webDriver.WindowHandles;
-                _webDriver.SwitchTo().Window(windows[tabIndex]);
+                var windows = Driver.WindowHandles;
+                Driver.SwitchTo().Window(windows[tabIndex]);
             }
             public static IWebDriver GetDriver(Drivers driver)
             {
-                //added to handle the firefox driver
                 switch (driver)
                 {
                     case Drivers.Chrome:
@@ -56,30 +54,30 @@ namespace TestyRawa
 
             internal static IWebElement FindElement(By by)
             {
-                return _webDriver.FindElement(by);
+                return Driver.FindElement(by);
             }
 
             public static bool ElementIsDisplayed(By element)
             {
                 var present = false;
-                _webDriver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(0);
+                Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(0);
                 try
                 {
-                    present = _webDriver.FindElement(element).Displayed;
+                    present = Driver.FindElement(element).Displayed;
                 }
                 catch (NoSuchElementException)
                 {
                 }
-                _webDriver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
+                Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
                 return present;
             }
 
-            public static IWebDriver Driver { get { return _webDriver; } }
-            public static string Title { get { return _webDriver.Title; } }
+            public static IWebDriver Driver { get; private set; }
+            public static string Title { get { return Driver.Title; } }
 
             public static void Initialize()
             {
-                _webDriver = GetDriver(Drivers.Chrome);
+                Driver = GetDriver(Drivers.Chrome);
                 Goto("konfigurator3d");
                 WaitUntilElementIsDisplayed(By.XPath("//button[@class='btn btn-primary btn-lg btn-start']"), 5);
                 MaximizeWindow();
@@ -87,32 +85,37 @@ namespace TestyRawa
 
             public static void Close()
             {
-                _webDriver.Close();
+                Driver.Close();
             }
 
             public static void Goto(string url, bool useBaseUrl = true)
             {
                 if (useBaseUrl)
-                    _webDriver.Navigate().GoToUrl(string.Format("{0}/{1}", _baseUrl, url));
+                    Driver.Navigate().GoToUrl(string.Format("{0}/{1}", _baseUrl, url));
                 else
-                    _webDriver.Navigate().GoToUrl(url);
+                    Driver.Navigate().GoToUrl(url);
             }
             public static void MaximizeWindow()
             {
-                _webDriver.Manage().Window.Maximize();
+                Driver.Manage().Window.Maximize();
             }
             public static void Quit()
             {
-                _webDriver.Quit();
+                Driver.Quit();
             }
             public static void ClickOnElement (By element)
             {
-                _webDriver.FindElement(element).Click();
+                Driver.FindElement(element).Click();
             }
             public static string GetElementAttribute(By element, string attributeName)
             {
-                return _webDriver.FindElement(element).GetAttribute(attributeName);
+                return Driver.FindElement(element).GetAttribute(attributeName);
             }
+            public static void RefreshWebSite()
+            {
+                Driver.Navigate().Refresh();
+            }
+
         }
     }
 }

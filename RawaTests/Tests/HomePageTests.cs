@@ -24,8 +24,8 @@ namespace RawaTests.Tests
         {
             Browser.Quit();
         }
-        [Test,Description("hahah")]
-        public void ButtonStartIsDisplayed()
+        [Test]
+        public void HomePageElementsIsDisplayed()
         {
             var homeModel = homePageSrv.GetHomePageModel();
             Assert.IsTrue(homeModel.StartButton.Displayed);

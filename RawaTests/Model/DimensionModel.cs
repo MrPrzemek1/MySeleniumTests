@@ -1,9 +1,5 @@
 ﻿using OpenQA.Selenium;
-using RawaTests.Model.Base;
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using static TestyRawa.DriverHelper.Browser;
 namespace RawaTests.StepOne
 {
     class DimensionModel : IComparable<DimensionModel>

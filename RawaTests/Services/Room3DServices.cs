@@ -1,11 +1,6 @@
 ﻿using OpenQA.Selenium;
 using RawaTests.Helpers;
-using RawaTests.Lists;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using static TestyRawa.DriverHelper.Browser;
 
 namespace RawaTests.Services
